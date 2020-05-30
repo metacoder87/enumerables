@@ -104,3 +104,96 @@ describe Array do
       expect(duped_array).to eq(array)
     end
   end
+
+  describe "#my_each" do
+    let(:arr) { [1, 2, 3] }
+    it "calls the block passed to it" do
+      expect do |block|
+        ["test array"].my_each(&block)
+      end.to yield_control.once
+    end
+
+    it "yields each element to the block" do
+      expect do |block|
+        ["el1", "el2"].my_each(&block)
+      end.to yield_successive_args("el1", "el2")
+    end
+
+    it "does NOT call the built-in #each method" do
+      original_array = ["original array"]
+      expect(original_array).not_to receive(:each)
+      original_array.my_each {}
+    end
+
+    it "is chainable and returns the original array" do
+      original_array = ["original array"]
+      expect(original_array.my_each {}).to eq(original_array)
+    end
+
+    it "should return the values of the array" do
+      expect(arr.my_each { |num| puts num }.my_each { |num| puts num}).to eq(arr)
+    end
+  end
+
+  describe "#my_map" do
+    it "calls the block passed to it" do
+      expect do |block|
+        ["test array"].my_map(&block)
+      end.to yield_control.once
+    end
+
+    it "yields each element to the block" do
+      expect do |block|
+        ["el1", "el2"].my_map(&block)
+      end.to yield_successive_args("el1", "el2")
+    end
+
+    it "runs the block for each element" do
+      expect([1, 2, 3].my_map { |el| el * el }).to eq([1, 4, 9])
+      expect([-1, 0, 1].my_map { |el| el.odd? }).to eq([true, false, true])
+    end
+
+    it "does NOT call the built in built-in #map method" do
+      original_array = ["original array"]
+      expect(original_array).not_to receive(:map)
+      original_array.my_map {}
+    end
+
+    it "is chainable and returns a new array" do
+      original_array = ["original array"]
+      expect(original_array.my_map {}).not_to eq(original_array)
+    end
+  end
+
+  describe "#my_select" do
+    it "calls the block passed to it" do
+      expect do |block|
+        ["test element"].my_select(&block)
+      end.to yield_control
+    end
+
+    it "yields each element to the block" do
+      test_array = ["el1", "el2", "el3"]
+      expect do |block|
+        test_array.my_select(&block)
+      end.to yield_successive_args("el1", "el2", "el3")
+    end
+
+    it "returns an array of filtered down items" do
+      test_array = [1, 2, 3, 4, 5]
+      expect(test_array.my_select(&:odd?)).to eq([1, 3, 5])
+      expect(test_array.my_select { |el| el < 3 }).to eq([1, 2])
+    end
+
+    it "does NOT call the built-in #select method" do
+      test_array = ["el1", "el2", "el3"]
+      expect(test_array).not_to receive(:select)
+      test_array.my_select {}
+    end
+
+    it "selects elements based on the block" do
+      a = [1, 2, 3]
+      expect(a.my_select { |num| num > 1 }).to eq([2, 3])
+      expect(a.my_select { |num| num == 4 }).to eq([])
+    end
+  end
