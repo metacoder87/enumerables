@@ -197,3 +197,35 @@ describe Array do
       expect(a.my_select { |num| num == 4 }).to eq([])
     end
   end
+
+  describe "#my_inject" do
+    it "calls the block passed to it" do
+      expect do |block|
+        [1, 2].my_inject(&block)
+      end.to yield_control.once
+    end
+
+    it "makes the first element the accumulator if no default is given" do
+      expect do |block|
+        ["el1", "el2", "el3"].my_inject(&block)
+      end.to yield_successive_args(["el1", "el2"], [nil, "el3"])
+    end
+
+    it "yields the accumulator and each element to the block" do
+      expect do |block|
+        [1, 2, 3].my_inject(&block)
+      end.to yield_successive_args([1, 2], [nil, 3])
+    end
+
+    it "does NOT call the built-in #inject method" do
+      original_array = ["original array"]
+      expect(original_array).not_to receive(:inject)
+      original_array.my_inject {}
+    end
+
+    it "is chainable and returns a new array" do
+      original_array = ["original array"]
+      expect(original_array.my_inject {}).not_to eq(original_array)
+    end
+  end
+end
