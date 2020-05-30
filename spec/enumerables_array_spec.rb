@@ -398,3 +398,20 @@ describe "#my_join" do
     original_array.my_inject {}
   end
 end
+
+describe "#my_reverse" do
+
+  it "reverses an array of one item" do
+    expect([ 1 ].my_reverse).to eq([1])
+  end
+
+  it "reverses the string" do
+    expect([ "a", "b", "c" ].my_reverse).to eq(["c", "b", "a"])
+  end
+
+  it "does NOT call the built-in #inject method" do
+      original_array = ["original array"]
+      expect(original_array).not_to receive(:inject)
+      original_array.my_inject {}
+    end
+end
