@@ -318,3 +318,16 @@ describe "#my_all?" do
       original_array.my_all? {}
     end
 end
+
+describe "#my_flatten" do
+  let(:arr) { [1, 2, 3, [4, [5, 6]], [[[7]], 8]] }
+  it "should flatten an array of arrays" do
+    expect(arr.my_flatten).to eq([1, 2, 3, 4, 5, 6, 7, 8])
+  end
+
+  it "does NOT call the built-in #flatten method" do
+      expect(arr).not_to receive(:flatten)
+    arr.my_flatten {}
+  end
+end
+
