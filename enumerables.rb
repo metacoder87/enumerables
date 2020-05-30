@@ -76,6 +76,26 @@ class Array
         flat
     end
 
+# My Zip
+# Write my_zip to take any number of arguments. It should return a new array 
+# containing self.length elements. Each element of the new array should be an 
+# array with a length of the input arguments + 1 and contain the merged elements 
+# at that index. If the size of any argument is less than self, nil is returned 
+# for that location.
+
+    def my_zip(*arr)
+        zipped = []
+        self.my_each { |ele| zipped << [ele] }
+            while zipped[0].length < arr.count + 1
+                arr.my_each do |arra|
+                    arra.each_with_index do |el, i|
+                        zipped[i].to_a << el
+                    end
+                end
+            end
+        zipped.my_each { |sub| sub << nil while sub.length < self.length }
+    end
+
 p "my-each test"
 # my_each test
 return_value = [1, 2, 3].my_each do |num|
