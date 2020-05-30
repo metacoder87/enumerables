@@ -381,3 +381,20 @@ describe "#my_rotate" do
       original_array.my_rotate {}
     end
 end
+
+describe "#my_join" do
+  let(:a) { [ "a", "b", "c", "d" ] }
+  it "should join if no connector provided" do
+    expect(a.my_join).to eq("abcd")
+  end
+
+  it "should join around a connector" do
+    expect(a.my_join("$")).to eq("a$b$c$d")
+  end
+
+  it "does NOT call the built-in #inject method" do
+    original_array = ["original array"]
+      expect(original_array).not_to receive(:inject)
+    original_array.my_inject {}
+  end
+end
