@@ -40,3 +40,10 @@ end.my_each do |num|
 end
 
 p return_value
+
+p "my_select test"
+# my_select test
+a = [1, 2, 3]
+p a.my_select { |num| num > 1 } # => [2, 3]
+p a.my_select { |num| num == 4 } # => []
+
