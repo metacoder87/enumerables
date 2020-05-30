@@ -50,6 +50,15 @@ class Array
         self.my_each { |ele| boo = true if prc.call(ele) }
         boo
     end
+
+# My All
+# Write my_all? to return true only if all elements satisfy the block.
+
+    def my_all?(&prc)
+        boo = true
+        self.my_each { |ele| boo = false if prc.call(ele) == false }
+        boo
+    end
 p "my-each test"
 # my_each test
 return_value = [1, 2, 3].my_each do |num|
