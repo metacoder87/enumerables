@@ -30,6 +30,17 @@ class Array
         return selected
     end
 
+# My Reject
+# Write my_reject to take a block and return a new array excluding elements 
+# that satisfy the block.
+
+    def my_reject(&prc)
+        kept = []
+        self.my_each do |ele|
+            kept << ele if !prc.call(ele)
+        end
+        return kept
+    end
 
 p "my-each test"
 # my_each test
