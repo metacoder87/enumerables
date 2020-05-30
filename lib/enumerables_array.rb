@@ -1,3 +1,8 @@
+            # meta_coder (Gary Miller) =)
+            # gmiller052611@gmail.com
+            # https://github.com/metacoder87/enumerables
+
+
 # ### Factors
 #
 # Write a method `factors(num)` that returns an array containing all the
@@ -223,3 +228,6 @@ end
     def concatenate(strings)
         strings.inject(:+)
     end
+            # meta_coder (Gary Miller) =)
+            # gmiller052611@gmail.com
+            # https://github.com/metacoder87/enumerables

@@ -1,3 +1,8 @@
+            # meta_coder (Gary Miller) =)
+            # gmiller052611@gmail.com
+            # https://github.com/metacoder87/enumerables
+
+
 require "rspec"
 require "enumerables_array"
 
@@ -415,3 +420,6 @@ describe "#my_reverse" do
       original_array.my_inject {}
     end
 end
+            # meta_coder (Gary Miller) =)
+            # gmiller052611@gmail.com
+            # https://github.com/metacoder87/enumerables
