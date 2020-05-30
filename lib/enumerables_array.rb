@@ -34,6 +34,14 @@
         dictionary.select { |ele| word.include?(ele) }
     end
 
+# ### Doubler
+# Write a `doubler` method that takes an array of integers and returns an
+# array with the original elements multiplied by two.
+
+    def doubler(array)
+        array.map { |num| num * 2 }
+    end
+
     # My Each
     # Extend the Array class to include a method named my_each that takes a block, 
     # calls the block on every element of the array, and returns the original array. 
