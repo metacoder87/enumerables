@@ -58,3 +58,8 @@ a = [1, 2, 3]
 p a.my_select { |num| num > 1 } # => [2, 3]
 p a.my_select { |num| num == 4 } # => []
 
+p "my_reject test"
+# my_reject test
+p a.my_reject { |num| num > 1 } # => [1]
+p a.my_reject { |num| num == 4 } # => [1, 2, 3]
+
