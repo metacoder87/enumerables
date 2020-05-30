@@ -59,6 +59,23 @@ class Array
         self.my_each { |ele| boo = false if prc.call(ele) == false }
         boo
     end
+
+# My Flatten
+# my_flatten should return all elements of the array into a new, one-dimensional 
+# array. Hint: use recursion!
+
+    def my_flatten
+        return [self] if !self.is_a?(Array)
+        flat = []
+        self.each do |ele|
+            if ele.is_a?(Integer) 
+                flat << ele 
+            else flat += ele.my_flatten
+            end
+        end
+        flat
+    end
+
 p "my-each test"
 # my_each test
 return_value = [1, 2, 3].my_each do |num|
