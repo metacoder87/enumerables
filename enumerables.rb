@@ -96,6 +96,28 @@ class Array
         zipped.my_each { |sub| sub << nil while sub.length < self.length }
     end
 
+# My Rotate
+# Write a method my_rotate that returns a new array containing all the elements of
+# the original array in a rotated order. By default, the array should rotate by one 
+# element. If a negative value is given, the array is rotated in the opposite direction.
+
+    def my_rotate(num = 1)
+        arr = []
+        self.each { |ele| arr << ele }
+        while num > 0
+            piv = arr.shift
+            arr.push(piv)
+            num -= 1
+        end
+        
+        while num < 0
+            piv = arr.pop
+            arr.unshift(piv)
+            num += 1
+        end
+        arr
+    end
+
 p "my-each test"
 # my_each test
 return_value = [1, 2, 3].my_each do |num|
