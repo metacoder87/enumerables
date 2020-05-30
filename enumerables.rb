@@ -18,3 +18,12 @@ class Array
         return self
     end
 
+
+
+p "my-each test"
+# my_each test
+return_value = [1, 2, 3].my_each do |num|
+  puts num
+end.my_each do |num|
+  puts num
+end
