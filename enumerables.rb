@@ -107,3 +107,6 @@ p "my_all? test"
 p a.my_all? { |num| num > 1 } # => false
 p a.my_all? { |num| num < 4 } # => true
 
+p "my_flatten test"
+# my_flatten test
+p [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
