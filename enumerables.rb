@@ -205,3 +205,8 @@ p "my_join test"
 a = [ "a", "b", "c", "d" ]
 p a.my_join         # => "abcd"
 p a.my_join("$")    # => "a$b$c$d"
+
+p "my_reverse test"
+# my_reverse test
+p [ "a", "b", "c" ].my_reverse   #=> ["c", "b", "a"]
+p [ 1 ].my_reverse               #=> [1]
