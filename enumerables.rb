@@ -183,3 +183,8 @@ p a.my_rotate(2)      #=> ["c", "d", "a", "b"]
 p a.my_rotate(-3)     #=> ["b", "c", "d", "a"]
 p a.my_rotate(15)     #=> ["d", "a", "b", "c"]
 
+p "my_join test"
+# my_join test
+a = [ "a", "b", "c", "d" ]
+p a.my_join         # => "abcd"
+p a.my_join("$")    # => "a$b$c$d"
