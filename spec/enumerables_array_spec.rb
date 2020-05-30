@@ -250,3 +250,27 @@ describe "#concatenate" do
   end
 end
 
+describe "#my_reject" do
+  let(:a) { [1, 2, 3] }
+  it "calls the block passed to it" do
+      expect do |block|
+        ["test element"].my_reject(&block)
+      end.to yield_control
+    end
+
+  it "selects elements based on the block" do
+    expect(a.my_reject { |num| num > 1 }).to eq([1])
+  end
+
+  it "yields each element to the block" do
+    expect(a.my_reject { |num| num == 4 }).to eq([1, 2, 3])
+  end
+
+  it "does NOT call the built-in #reject method" do
+      original_array = ["original array"]
+      expect(original_array).not_to receive(:reject)
+      original_array.my_reject {}
+    end
+
+end
+
