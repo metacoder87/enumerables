@@ -85,3 +85,8 @@ p "my_any? test"
 p a.my_any? { |num| num > 1 } # => true
 p a.my_any? { |num| num == 4 } # => false
 
+p "my_all? test"
+# my_all? test
+p a.my_all? { |num| num > 1 } # => false
+p a.my_all? { |num| num < 4 } # => true
+
