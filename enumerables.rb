@@ -118,6 +118,16 @@ class Array
         arr
     end
 
+# My Join
+# my_join returns a single string containing all the elements of the array, 
+# separated by the given string separator. If no separator is given, an empty 
+# string is used.
+
+    def my_join(seperator = "")
+        joynd = ""
+        self.each_with_index { |ele| self[self.length-1] == ele ? joynd << ele : joynd << ele + seperator }
+        joynd
+    end
 p "my-each test"
 # my_each test
 return_value = [1, 2, 3].my_each do |num|
