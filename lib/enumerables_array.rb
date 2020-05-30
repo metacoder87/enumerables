@@ -42,6 +42,31 @@
         array.map { |num| num * 2 }
     end
 
+class Array
+
+    # Write a method, Array#bubble_sort, that takes in an optional proc argument.
+    # When given a proc, the method should sort the array according to the proc.
+    # When no proc is given, the method should sort the array in increasing order.
+    #
+    # Sorting algorithms like bubble_sort, commonly accept a block. That block accepts
+    # two parameters, which represents the two elements in the array being compared.
+    # If the block returns 1, it means that the second element passed to the block
+    # should go before the first (i.e. switch the elements). If the block returns -1,
+    # it means the first element passed to the block should go before the second
+    # (i.e. do not switch them). If the block returns 0 it implies that
+    # it does not matter which element goes first (i.e. do nothing).
+    #
+    # This should remind you of the spaceship operator! Convenient :)
+
+        def bubble_sort!(&prc)
+            self.sort! { |a, b| prc ? prc.call(a, b) : a <=> b }
+        end
+
+        def bubble_sort
+            sorted = self.dup
+            sorted.bubble_sort!
+        end
+
     # My Each
     # Extend the Array class to include a method named my_each that takes a block, 
     # calls the block on every element of the array, and returns the original array. 
