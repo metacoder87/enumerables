@@ -79,6 +79,10 @@ class Array
             return self
         end
 
+        def my_map(&block)
+            self.collect { |ele| yield ele }
+        end
+
     # My Select
     # Now extend the Array class to include my_select that takes a block and returns a 
     # new array containing only elements that satisfy the block. Use your my_each method!
