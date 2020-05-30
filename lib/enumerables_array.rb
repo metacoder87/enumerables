@@ -7,6 +7,33 @@
         (1..num).select { |i| num % i == 0 }
     end
 
+# ### Substrings and Subwords
+#
+# Write a method, `substrings`, that will take a `String` and return an
+# array containing each of its substrings. Don't repeat substrings.
+# Example output: `substrings("cat") => ["c", "ca", "cat", "a", "at",
+# "t"]`.
+#
+# Your `substrings` method returns many strings that are not true English
+# words. Let's write a new method, `subwords`, which will call
+# `substrings`, filtering it to return only valid words. To do this,
+# `subwords` will accept both a string and a dictionary (an array of
+# words).
+
+    def substrings(string)
+        subs = []
+            (0...string.length).each do |start_i|
+                (start_i...string.length).each do |end_i|
+                    subs << string[start_i..end_i]
+                end
+            end
+        subs
+    end
+
+    def subwords(word, dictionary)
+        dictionary.select { |ele| word.include?(ele) }
+    end
+
     # My Each
     # Extend the Array class to include a method named my_each that takes a block, 
     # calls the block on every element of the array, and returns the original array. 
