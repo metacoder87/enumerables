@@ -229,3 +229,24 @@ describe Array do
     end
   end
 end
+
+describe "#concatenate" do
+  let(:strings) { ["These ", "are ", "my ", "strings"] }
+
+  it "returns the concatenation of the strings passed in" do
+    expect(concatenate(strings)).to eq("These are my strings")
+  end
+
+  it "does not modify the original strings" do
+    concatenate(strings)
+
+    expect(strings).to eq(["These ", "are ", "my ", "strings"])
+  end
+
+  it "uses the Array#inject method" do
+    expect(strings).to receive(:inject)
+
+    concatenate(strings)
+  end
+end
+
