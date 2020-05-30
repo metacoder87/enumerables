@@ -1,3 +1,12 @@
+# ### Factors
+#
+# Write a method `factors(num)` that returns an array containing all the
+# factors of a given number.
+
+    def factors(num)
+        (1..num).select { |i| num % i == 0 }
+    end
+
     # My Each
     # Extend the Array class to include a method named my_each that takes a block, 
     # calls the block on every element of the array, and returns the original array. 
