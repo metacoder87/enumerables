@@ -92,6 +92,15 @@ class Array
             dub.keep_if { |ele| yield ele }
         end
 
+        def my_inject(memo = nil, &block)
+            beginning = memo.nil? ? 1 : 0
+            memo ||= self.first
+                (beginning...length).each do |ele|
+                    memo = yield(memo, self[ele])
+                end
+            memo
+        end
+
     # My Reject
     # Write my_reject to take a block and return a new array excluding elements 
     # that satisfy the block.
