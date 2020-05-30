@@ -1,3 +1,6 @@
+            # meta_coder (Gary Miller) =)
+            # gmiller052611@gmail.com
+            # https://github.com/metacoder87/enumerables
 
 
 require "byebug"
@@ -210,3 +213,6 @@ p "my_reverse test"
 # my_reverse test
 p [ "a", "b", "c" ].my_reverse   #=> ["c", "b", "a"]
 p [ 1 ].my_reverse               #=> [1]
+            # meta_coder (Gary Miller) =)
+            # gmiller052611@gmail.com
+            # https://github.com/metacoder87/enumerables
