@@ -71,3 +71,8 @@ p "my_reject test"
 p a.my_reject { |num| num > 1 } # => [1]
 p a.my_reject { |num| num == 4 } # => [1, 2, 3]
 
+p "my_any? test"
+# my_any? test
+p a.my_any? { |num| num > 1 } # => true
+p a.my_any? { |num| num == 4 } # => false
+
