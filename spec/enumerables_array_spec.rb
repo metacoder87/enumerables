@@ -331,3 +331,28 @@ describe "#my_flatten" do
   end
 end
 
+describe "#my_zip" do
+  let(:a) { [ 4, 5, 6 ] }
+  let(:b) { [ 7, 8, 9 ] }
+
+  it "zips together multiple arrays" do
+    expect([1, 2, 3].my_zip(a, b)).to eq([[1, 4, 7], [2, 5, 8], [3, 6, 9]])
+    expect([1, 2].my_zip(a, b)).to eq([[1, 4, 7], [2, 5, 8]])
+  end
+
+  it "rounds out the spaces in the arrays with nil" do
+    expect(a.my_zip([1,2], [8])).to eq([[4, 1, 8], [5, 2, nil], [6, nil, nil]])
+  end
+
+  it "zips as many arrays countless arrays" do
+    c = [10, 11, 12]
+    d = [13, 14, 15]
+    expect([1, 2].my_zip(a, b, c, d)).to eq([[1, 4, 7, 10, 13], [2, 5, 8, 11, 14]])
+  end
+
+  it "does NOT call the built-in #inject method" do
+    original_array = ["original array"]
+      expect(original_array).not_to receive(:zip)
+    original_array.my_zip {}
+  end
+end
