@@ -182,6 +182,7 @@ class Array
             end
             arr
         end
+
     # My Join
     # my_join returns a single string containing all the elements of the array, 
     # separated by the given string separator. If no separator is given, an empty 
@@ -207,3 +208,18 @@ class Array
         arr
         end
 
+end
+
+# ### Concatenate
+#
+# Create a method that takes in an `Array` of `String`s and uses `inject`
+# to return the concatenation of the strings.
+#
+# ```ruby
+# concatenate(["Yay ", "for ", "strings!"])
+# # => "Yay for strings!"
+# ```
+
+    def concatenate(strings)
+        strings.inject(:+)
+    end
