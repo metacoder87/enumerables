@@ -42,6 +42,14 @@ class Array
         return kept
     end
 
+# My Any
+# Write my_any? to return true if any elements of the array satisfy the block.
+
+    def my_any?(&prc)
+        boo = false
+        self.my_each { |ele| boo = true if prc.call(ele) }
+        boo
+    end
 p "my-each test"
 # my_each test
 return_value = [1, 2, 3].my_each do |num|
