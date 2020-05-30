@@ -18,6 +18,17 @@ class Array
         return self
     end
 
+# My Select
+# Now extend the Array class to include my_select that takes a block and returns a 
+# new array containing only elements that satisfy the block. Use your my_each method!
+
+    def my_select(&prc)
+        selected = []
+        self.my_each do |ele|
+            selected << ele if prc.call(ele)
+        end
+        return selected
+    end
 
 
 p "my-each test"
