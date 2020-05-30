@@ -274,3 +274,47 @@ describe "#my_reject" do
 
 end
 
+describe "#my_any?" do
+  let(:arr) { [1, 2, 3] }
+  it "calls the block passed to it" do
+    expect do |block|
+      ["test element"].my_any?(&block)
+    end.to yield_control
+  end
+
+  it "returns a true if at least one item is true" do
+    expect(arr.my_any? { |num| num > 1 }).to be(true)
+  end
+
+  it "returns false when no item is true" do
+    expect(arr.my_any? { |num| num == 4 }).to be(false)
+  end
+
+  it "does NOT call the built-in #any? method" do
+    expect(arr).not_to receive(:any?)
+    arr.my_any? {}
+  end
+end
+
+describe "#my_all?" do
+  let(:arr) { [1, 2, 3] }
+  it "calls the block passed to it" do
+      expect do |block|
+        ["test element"].my_all?(&block)
+      end.to yield_control
+    end
+
+  it "returns true if all of the items are true" do
+    expect(arr.my_all? { |num| num < 4 }).to be(true)
+  end
+
+  it "returns false if none of the items are true" do
+    expect(arr.my_all? { |num| num > 1 }).to be(false)
+  end
+
+  it "does NOT call the built-in #all? method" do
+      original_array = ["original array"]
+      expect(original_array).not_to receive(:all?)
+      original_array.my_all? {}
+    end
+end
