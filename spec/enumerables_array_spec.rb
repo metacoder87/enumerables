@@ -356,3 +356,28 @@ describe "#my_zip" do
     original_array.my_zip {}
   end
 end
+
+describe "#my_rotate" do
+  let(:a) { [ "a", "b", "c", "d" ] }
+  it "should rotate 1 if no number is provided" do
+    expect(a.my_rotate).to eq(["b", "c", "d", "a"])
+  end
+
+  it "should rotate a number of times depending on the number specified" do
+    expect(a.my_rotate(2)).to eq(["c", "d", "a", "b"])
+  end
+
+  it "should rotate in reverse if the number is negative" do
+    expect(a.my_rotate(-3)).to eq(["b", "c", "d", "a"])
+  end
+
+  it "should rotate as many times as is specied" do
+    expect(a.my_rotate(15)).to eq(["d", "a", "b", "c"])
+  end
+
+  it "does NOT call the built-in #rotate method" do
+      original_array = ["original array"]
+      expect(original_array).not_to receive(:rotate)
+      original_array.my_rotate {}
+    end
+end
