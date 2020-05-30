@@ -128,6 +128,23 @@ class Array
         self.each_with_index { |ele| self[self.length-1] == ele ? joynd << ele : joynd << ele + seperator }
         joynd
     end
+
+# My Reverse
+# Write a method that returns a new array containing all 
+# the elements of the original array in reverse order.
+
+    def my_reverse
+        arr = []
+        index = self.length - 1
+        while index > -1
+            arr << self[index]
+            index -= 1
+        end
+       arr
+    end
+
+end
+
 p "my-each test"
 # my_each test
 return_value = [1, 2, 3].my_each do |num|
