@@ -164,3 +164,12 @@ p [1, 2].my_zip(a, b)    # => [[1, 4, 7], [2, 5, 8]]
 c = [10, 11, 12]
 d = [13, 14, 15]
 p [1, 2].my_zip(a, b, c, d)    # => [[1, 4, 7, 10, 13], [2, 5, 8, 11, 14]]
+
+p "my_rotate test"
+# my_rotate test
+a = [ "a", "b", "c", "d" ]
+p a.my_rotate         #=> ["b", "c", "d", "a"]
+p a.my_rotate(2)      #=> ["c", "d", "a", "b"]
+p a.my_rotate(-3)     #=> ["b", "c", "d", "a"]
+p a.my_rotate(15)     #=> ["d", "a", "b", "c"]
+
